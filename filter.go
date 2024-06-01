@@ -17,5 +17,5 @@ func Filter[V any](fn func(V) bool) SeqModifier[V, V] {
 }
 
 func Filter2[K, V any](fn func(K, V) bool) Seq2Modifier[K, V, K, V] {
-	return Make2(Filter(PairFn(fn)))
+	return Make2Fn[K, V](Filter)(fn)
 }
